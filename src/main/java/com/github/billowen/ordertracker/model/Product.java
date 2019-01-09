@@ -1,5 +1,7 @@
 package com.github.billowen.ordertracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +21,10 @@ public class Product {
     private List<String> tags;
 
     private String description;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ProductItem> productItems;
 
     public Product() {}
 
@@ -58,6 +64,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<ProductItem> getProductItems() {
+        return productItems;
+    }
+
+    public void setProductItems(List<ProductItem> productItems) {
+        this.productItems = productItems;
     }
 
     @Override

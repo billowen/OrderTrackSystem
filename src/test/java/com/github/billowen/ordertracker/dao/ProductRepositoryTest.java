@@ -35,4 +35,18 @@ public class ProductRepositoryTest {
         assertThat(products, hasSize(1));
         assertThat(products.get(0).getProductName(), is(product.getProductName()));
     }
+
+    @Test
+    public void whenFindByProductName_thenReturnProductList() {
+        Product product1 = new Product("p1", Arrays.asList("秋"), "秋被");
+        Product product2 = new Product("p1", Arrays.asList("春"), "春被");
+
+        testEntityManager.persist(product1);
+        testEntityManager.persist(product2);
+        testEntityManager.flush();
+
+        List<Product> products = productRepository.findByProductName("p1");
+
+        assertThat(products, hasSize(2));
+    }
 }
