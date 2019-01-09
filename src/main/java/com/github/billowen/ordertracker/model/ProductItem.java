@@ -24,6 +24,11 @@ public class ProductItem {
     public ProductItem() {
     }
 
+    public ProductItem(String size, Double price) {
+        this.size = size;
+        this.price = price;
+    }
+
     public ProductItem(String size, Double price, Product product) {
         this.size = size;
         this.price = price;

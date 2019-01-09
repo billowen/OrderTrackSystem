@@ -3,6 +3,7 @@ package com.github.billowen.ordertracker.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,9 +19,9 @@ public class Product {
     @ElementCollection
     @CollectionTable(name = "product_tags", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "tag")
-    private List<String> tags;
+    private List<String> tags = new ArrayList<>();
 
-    private String description;
+    private String description = "";
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
