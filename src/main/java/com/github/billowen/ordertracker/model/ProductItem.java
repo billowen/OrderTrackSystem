@@ -17,7 +17,7 @@ public class ProductItem {
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_item")
+    @JoinColumn(name = "product_id")
     @JsonIgnore
     private Product product;
 

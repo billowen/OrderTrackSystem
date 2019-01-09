@@ -26,6 +26,10 @@ public class Product {
     @JsonIgnore
     private List<ProductItem> productItems;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ProductPicture> productPictures;
+
     public Product() {}
 
     public Product(String productName, List<String> tags, String description) {
@@ -72,6 +76,14 @@ public class Product {
 
     public void setProductItems(List<ProductItem> productItems) {
         this.productItems = productItems;
+    }
+
+    public List<ProductPicture> getProductPictures() {
+        return productPictures;
+    }
+
+    public void setProductPictures(List<ProductPicture> productPictures) {
+        this.productPictures = productPictures;
     }
 
     @Override
